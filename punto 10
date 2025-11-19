@@ -1,0 +1,42 @@
+#define N 10
+int lista[N] = {1,2,3,4,5,6,7,8,9,10};
+bool mostrado = false; 
+
+float promedioLista(int *pLista, int tam){
+  int suma = 0;
+  for(int i = 0; i < tam; i++){
+    suma += *(pLista + i);
+  }
+  return (float)suma / tam;
+}
+
+void mostrarLista(int *pLista, int tam){
+  Serial.println("Lista de numeros:");
+  for(int i = 0; i < tam; i++){
+    Serial.print(*(pLista + i));
+    Serial.print(" ");
+  }
+  Serial.println();
+}
+
+void setup(){
+  Serial.begin(9600);
+  Serial.println("PROMEDIO DE ELEMENTOS DE UNA LISTA ");
+}
+
+void loop(){
+  if(!mostrado){ 
+    mostrarLista(lista, N);
+
+    float promedio = promedioLista(lista, N);
+
+    Serial.print("El promedio de los numeros es: ");
+    Serial.println(promedio, 2); 
+
+    mostrado = true; 
+  }
+}
+
+
+
+
